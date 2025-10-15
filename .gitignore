@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+.build/
+.env
+.venv/
+venv/
+VerifLMenv/
+.env.*
+*.egg-info/
+.eggs/
+.dist/
+dist/
+build/
+.pytest_cache/
+.ipynb_checkpoints/
+.mypy_cache/
+.dmypy.json
+.pyre/
+.pytype/
+coverage.xml
+htmlcov/
+.coverage*
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+
+# Editors/IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node (if present)
+node_modules/
+
+# Hugging Face / datasets caches
+~/.cache/huggingface/
+~/.cache/huggingface_hub/
+~/.cache/datasets/
+
+# Lean 3/4 artifacts
+.olean/
+.lean-cache/
+lean_packages/
+lake-packages/
+lake-manifest.json
+lakefile.olean
+
+# Logs
+*.log
+

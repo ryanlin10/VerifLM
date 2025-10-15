@@ -1,0 +1,19 @@
+# Core model tooling
+transformers>=4.43
+accelerate>=0.33
+bitsandbytes>=0.43 ; platform_system == "Linux"
+tokenizers>=0.15
+sentencepiece>=0.1
+huggingface_hub>=0.24
+peft>=0.11
+
+datasets>=2.20
+
+# Optional parsing/tools (comment out if not needed)
+# tree_sitter_lean  # via pip if available; alternatively install editor plugin
+
+# Dev/test (optional)
+# pytest
+# mypy
+# black
+# ruff
