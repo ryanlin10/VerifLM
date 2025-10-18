@@ -1,0 +1,36 @@
+model_name: gpt2
+seq_len: 512
+dataset_path: VerifLM/data/hf
+train_split: train
+eval_split: val
+samples_path: checkpoints/samples.txt
+train_batch_size: 1
+eval_batch_size: 1
+gradient_accumulation_steps: 16
+num_epochs: 2
+eval_steps: 400
+logging_steps: 50
+save_steps: 400
+early_stopping_patience: null
+gradient_clip_norm: 1.0
+mixed_precision: null
+output_dir: checkpoints/gpt2-lora-lean
+
+optimizer:
+  learning_rate: 0.0002
+  weight_decay: 0.01
+  beta1: 0.9
+  beta2: 0.95
+  epsilon: 1.0e-08
+
+scheduler:
+  name: cosine
+  warmup_steps: 0
+  warmup_ratio: 0.05
+
+lora:
+  r: 8
+  alpha: 32
+  dropout: 0.05
+  target_modules: ["c_attn"]
+  bias: none

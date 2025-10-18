@@ -1,0 +1,55 @@
+# GPU-optimized config for desktop training
+model_name: gpt2
+seq_len: 1024
+dataset_path: VerifLM/data/hf
+train_split: train
+eval_split: val
+samples_path: checkpoints/samples.txt
+
+# GPU-optimized batch sizes
+train_batch_size: 4  # Increase for GPU
+eval_batch_size: 8   # Increase for GPU
+gradient_accumulation_steps: 4  # Reduce since we have larger batch size
+
+# Training settings
+num_epochs: 3
+eval_steps: 100
+logging_steps: 10
+save_steps: 200
+early_stopping_patience: 3
+gradient_clip_norm: 1.0
+
+# GPU optimizations
+mixed_precision: bf16  # Use bfloat16 for better GPU performance
+device_map: auto       # Automatic GPU placement
+num_workers: 8         # More workers for GPU
+
+output_dir: checkpoints/gpt2-lora-lean-gpu
+logging_dir: logs/gpu-training
+
+# Optimizer settings
+optimizer:
+  learning_rate: 0.0001  # Slightly lower for stability
+  weight_decay: 0.01
+  beta1: 0.9
+  beta2: 0.95
+  epsilon: 1.0e-08
+
+# Scheduler
+scheduler:
+  name: cosine
+  warmup_steps: 100
+  warmup_ratio: 0.1
+
+# LoRA settings optimized for mathematical reasoning
+lora:
+  r: 16           # Higher rank for complex reasoning
+  alpha: 32        # Scaling factor
+  dropout: 0.1     # Slightly higher dropout
+  target_modules: ["c_attn", "c_proj"]  # Target both attention and projection
+  bias: none
+
+# Monitoring
+use_wandb: true
+report_to: ["wandb"]
+seed: 42
